@@ -1,24 +1,116 @@
-entity Artist{
-	name String,
-    surname String,
-    birthdate LocalDate,
-    sex String,
-    alive Boolean,
-    deathdate LocalDate
+
+entity Country {
+	countryName String, /* este campo no va ser necesario ?*/
+    locationGoogleMaps String,
+    latitude Double,
+    logitude Double
 }
 
-entity RatingArtist{
-
-    date ZonedDateTime,
-    rating Integer
+entity Genre {
+	genreName String
 }
 
-
-
-relationship ManyToOne{
-	
-    
-    RatingArtist{artist(name)} to Artist{rating},
-    RatingArtist{user(login)} to User{rating}
-   
+entity Sex {
+	sexName String
 }
+
+entity Status {
+	statusName String
+}
+
+entity Album {
+	albumName String
+    numSongs Integer
+}
+
+entity Song {
+	songName String
+}
+
+entity Review {
+	reiewName String
+}
+
+entity Artist {
+	nameArtist String,
+    born LocalDate
+}
+
+entity Band{
+	nameBand String,
+    locationGoogleMaps String,
+    latitude Double,
+    logitude Double,
+    status Boolean
+}
+
+entity Collection {
+	nameCollection String
+}
+
+entity Social {
+	nameSocial String
+}
+
+entity Instrument {
+	nameInstrument String
+}
+
+entity Label {
+	nameLabel String
+}
+
+entity UserExt {
+	image ImageBlob,
+    latitude Double,
+    logitude Double,
+    locationGoogleMaps String
+}
+
+entity ValoracionAlbum{
+	puntuacion Integer,
+    like Boolean,
+    timestamp ZonedDateTime
+}
+
+entity ValoracionSong{
+	puntuacion Integer,
+    like Boolean,
+    timestamp ZonedDateTime
+}
+
+/*Many To One*/
+relationship ManyToOne {
+    Song{album(albumName)} to Album{song},
+    ValoracionAlbum{puntuacion} to Album{valoracione},
+    ValoracionSong{puntuacion} to Song{valoracione},
+    Album{band} to Band{album},
+    Label{nameLabel} to Band{nameBand},
+    Label{nameLabel} to Artist{nameArtist},
+    Artist{nameArtist} to Country{localationGoogleMaps},
+	Artist{nameArtist} to Band{nameBand},
+    Band{nameBand} to Country{localationGoogleMaps}
+}
+
+/*One To One*/
+relationship OneToOne {
+	UserExt{user(login)} to User,
+	Artist{nameArtist} to Sex{sexName},
+    Artist{nameArtist} to Collection{nameCollection},
+    Band{nameBand} to Collection{nameCollection},
+    Status{statusName} to Band{nameBand}
+}
+
+/*Many To Many*/
+relationship ManyToMany {
+	Genre{genreName} to Band{nameBand},
+    Instrument {nameInstrument} to Artist{nameArtist}
+    Album{label(nameLabel)} to Label{album}
+}
+
+/*One To Many*/
+
+
+
+
+

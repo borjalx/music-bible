@@ -7,6 +7,22 @@
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Entidades",
+                "country": "Country",
+                "genre": "Genre",
+                "sex": "Sex",
+                "status": "Status",
+                "album": "Album",
+                "song": "Song",
+                "review": "Review",
+                "artist": "Artist",
+                "band": "Band",
+                "collection": "Collection",
+                "social": "Social",
+                "instrument": "Instrument",
+                "label": "Label",
+                "userExt": "User Ext",
+                "valoracionAlbum": "Valoracion Album",
+                "valoracionSong": "Valoracion Song",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
